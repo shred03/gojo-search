@@ -8,9 +8,10 @@ const escapeMarkdown = (text) => {
 const ITEMS_PER_PAGE = 10;
 
 const handleSearch = async (ctx) => {
-  const chatId = ctx.chat.id;
-  console.log(chatId);
-  
+  const chatType = ctx.chat.type;
+  if (chatType !== 'private') {
+    return ctx.reply('🔒 Search command is only available in private chat.');
+  }
   const query = ctx.message.text.replace('/search', '').trim();
   
   if (!query) {
@@ -64,7 +65,7 @@ const handleSearch = async (ctx) => {
 const createSearchKeyboard = (files, query, currentPage, totalPages) => {
   // File buttons
   const fileButtons = files.map(file => [{
-    text: `📁 ${file.file_name}`,
+    text: `[SAB KUCH] ${file.file_name}`,
     callback_data: `file_${file._id}`
   }]);
 

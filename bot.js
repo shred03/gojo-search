@@ -66,21 +66,11 @@ bot.start((ctx) => {
   const welcomeMessage = `
 🤖 *Welcome to File Search Bot!*
 
-This bot automatically stores files from authorized channels and groups, allowing you to search them.
-
 *Commands:*
-• \`/search <query>\` - Search for files (private chat only)
-• \`/help\` - Show this help message
-• \`/stats\` - Show bot statistics
-• \`/chats\` - Show authorized channels/groups (admin only)
-
-*How it works:*
-1. Add this bot as admin to your authorized channel/group
-2. Forward documents, videos, or audio files to the channel/group
-3. Use \`/search\` in private chat to find files
+• \`/search <filename>\` - Search for files (private chat only)
 
 *Example:*
-\`/search Naruto\`
+\`/search Kalki 2898 AD\`
   `;
   
   ctx.reply(welcomeMessage, { parse_mode: 'Markdown' });
@@ -91,19 +81,12 @@ bot.help((ctx) => {
 🆘 *Bot Help*
 
 *Search Command:*
-\`/search <query>\` - Search for files by name or caption
-
-*Examples:*
-• \`/search Naruto\` - Find files with "Naruto" in name or caption
-• \`/search tutorial\` - Find files with "tutorial" in name or caption
+\`/search <filename>\` - Search for files by name or caption
 
 *Notes:*
 • Search is case-insensitive
-• Returns maximum 10 results as buttons
 • Only works in private chat
-• Supports partial matches
-• Click button to download file
-• Only files from authorized channels/groups are stored
+
   `, { parse_mode: 'Markdown' });
 });
 
