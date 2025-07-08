@@ -1,8 +1,8 @@
 require('dotenv').config();
 const { Telegraf } = require('telegraf');
 const connectDB = require('./config/database');
-const { handleDocument, handleVideo, handleAudio } = require('./handlers/fileHandlers');
-const { handleSearch, handleFileCallback } = require('./handlers/searchHandler');
+const { handleDocument, handleVideo, handleAudio } = require('./handlers/filehandlers');
+const { handleSearch, handleFileCallback, handleSearchPagination, handlePageInfo } = require('./handlers/searchhandler');
 
 if (!process.env.BOT_TOKEN) {
   console.error('❌ BOT_TOKEN is required in .env file');
@@ -266,8 +266,14 @@ bot.on('channel_post', async (ctx) => {
 bot.command('search', handleSearch);
 
 bot.on('callback_query', (ctx) => {
-  if (ctx.callbackQuery.data.startsWith('file_')) {
+  const data = ctx.callbackQuery.data;
+  
+  if (data.startsWith('file_')) {
     handleFileCallback(ctx);
+  } else if (data.startsWith('search_')) {
+    handleSearchPagination(ctx);
+  } else if (data === 'page_info') {
+    handlePageInfo(ctx);
   }
 });
 

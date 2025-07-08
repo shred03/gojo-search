@@ -2,7 +2,7 @@ const File = require('../models/File');
 
 // Get authorized chats from environment or config
 const getAuthorizedChats = () => {
-  const AUTHORIZED_CHATS = ['-1002197196177','-1002017794197','-1002122761187','-1002019830936'];
+  const AUTHORIZED_CHATS = [];
   
   if (process.env.AUTHORIZED_CHATS) {
     const envChats = process.env.AUTHORIZED_CHATS.split(',').map(id => id.trim());
