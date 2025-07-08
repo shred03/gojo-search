@@ -15,7 +15,7 @@ const handleSearch = async (ctx) => {
   const query = ctx.message.text.replace('/search', '').trim();
   
   if (!query) {
-    return ctx.reply('❌ Please provide a search query.\n\nExample: `/search Naruto`');
+    return ctx.reply('❌ Please provide a search query.\n\nExample: `/search Kalki 2898AD`');
   }
 
   try {
