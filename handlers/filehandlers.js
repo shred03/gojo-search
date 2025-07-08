@@ -12,7 +12,6 @@ const getAuthorizedChats = () => {
   return AUTHORIZED_CHATS;
 };
 
-// Function to check if chat is authorized
 const isAuthorizedChat = (chatId) => {
   const authorizedChats = getAuthorizedChats();
   const chatIdStr = chatId.toString();
