@@ -63,7 +63,6 @@ const handleFileCallback = async (ctx) => {
       return ctx.reply('❌ File not found or may have been deleted.');
     }
 
-    // const escapedCaption = escapeMarkdown(file.caption);
     const defaultCaption = file.caption;
     const customCaption = "\n\nPowered By: [SAB KUCH]"
     
